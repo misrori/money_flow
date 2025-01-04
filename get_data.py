@@ -113,11 +113,11 @@ def get_one_ticker_info(ticker):
 
 get_one_ticker_info('MSTR')
 
-df = pd.DataFrame(list(map(get_one_ticker_info, tqdm(tw.stock['name'].to_list()[0:10]) )))
+df = pd.DataFrame(list(map(get_one_ticker_info, tw.stock['name'].to_list()[0:1000] )))
 
 # create data folder if does not exist
 if not os.path.exists('data'):
     os.makedirs('data')
 
-df.to_csv('data/top_10_stocks.csv')
-df.to_csv('last_stocks_update.csv')
+df.to_csv('data/top_1000_stocks.csv', index=False)
+df.to_csv('last_stocks_update.csv', index=False)
