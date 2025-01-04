@@ -109,9 +109,8 @@ def get_one_ticker_info(ticker):
         data_dict['number_of_employees'] = tw.stock.loc[tw.stock['name']==ticker, 'number_of_employees'].iloc[0]
         return data_dict
     except:
+        print(f'Error with {ticker}')
         return None
-
-get_one_ticker_info('MSTR')
 
 df = pd.DataFrame(list(map(get_one_ticker_info, tw.stock['name'].to_list()[0:1000] )))
 
