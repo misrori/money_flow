@@ -120,5 +120,5 @@ if not os.path.exists('data'):
 
 # filter empty rows
 df = df[df['date'].notna()]
-df.to_csv('data/top_3000_stocks.csv', index=False)
+df.to_csv(f'data/top_3000_stocks_{current_date.strftime("%Y-%m-%d")}.csv', index=False)
 df.to_csv('last_stocks_update.csv', index=False)
