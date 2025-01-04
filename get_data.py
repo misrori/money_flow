@@ -110,13 +110,13 @@ def get_one_ticker_info(ticker):
         return data_dict
     except:
         print(f'Error with {ticker}')
-        return None
+        return pd.DataFrame()
 
-df = pd.DataFrame(list(map(get_one_ticker_info, tw.stock['name'].to_list()[0:1000] )))
+df = pd.DataFrame(list(map(get_one_ticker_info, tw.stock['name'].to_list()[0:3000] )))
 
 # create data folder if does not exist
 if not os.path.exists('data'):
     os.makedirs('data')
 
-df.to_csv('data/top_1000_stocks.csv', index=False)
+df.to_csv('data/top_3000_stocks.csv', index=False)
 df.to_csv('last_stocks_update.csv', index=False)
