@@ -118,5 +118,7 @@ df = pd.DataFrame(list(map(get_one_ticker_info, tw.stock['name'].to_list()[0:300
 if not os.path.exists('data'):
     os.makedirs('data')
 
+# filter empty rows
+df = df[df['date'].notna()]
 df.to_csv('data/top_3000_stocks.csv', index=False)
 df.to_csv('last_stocks_update.csv', index=False)
