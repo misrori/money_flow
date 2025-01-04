@@ -112,7 +112,7 @@ def get_one_ticker_info(ticker):
         print(f'Error with {ticker}')
         return pd.DataFrame()
 
-df = pd.DataFrame(list(map(get_one_ticker_info, tw.stock['name'].to_list()[0:3000] )))
+df = pd.DataFrame(list(map(get_one_ticker_info, tw.stock['name'].to_list()[0:5000] )))
 
 # create data folder if does not exist
 if not os.path.exists('data'):
@@ -120,5 +120,5 @@ if not os.path.exists('data'):
 
 # filter empty rows
 df = df[df['date'].notna()]
-df.to_csv(f'data/top_3000_stocks_{current_date.strftime("%Y-%m-%d")}.csv', index=False)
+df.to_csv(f'data/top_5000_stocks_{current_date.strftime("%Y-%m-%d")}.csv', index=False)
 df.to_csv('last_stocks_update.csv', index=False)
