@@ -30,6 +30,7 @@ jobs:
           pip install pandas
           pip install requests
           pip install goldhand
+          pip install numpy==1.26.4
     
       - name: execute py script # run main.py
         run: python get_data.py
