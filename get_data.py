@@ -107,6 +107,29 @@ def get_one_ticker_info(ticker):
         data_dict['price_per_earning'] = tw.stock.loc[tw.stock['name']==ticker, 'price_earnings_ttm'].iloc[0]
         data_dict['earnings_per_share_basic_ttm'] = tw.stock.loc[tw.stock['name']==ticker, 'earnings_per_share_basic_ttm'].iloc[0]
         data_dict['number_of_employees'] = tw.stock.loc[tw.stock['name']==ticker, 'number_of_employees'].iloc[0]
+        
+        # last min based on local column
+        last_local_min = df.loc[df['local']=='minimum', 'date'].max()
+        # days after last local min
+        days_after_last_local_min = (current_date.date() - last_local_min).days
+        # percent change from last local min price
+        last_local_min_price = df.loc[df['date']==last_local_min, 'close'].iloc[0]
+        percent_change_from_last_local_min = ((last_price/ last_local_min_price )-1) * 100
+        data_dict['last_local_min_date'] = last_local_min
+        data_dict['last_local_min_price'] = last_local_min_price
+        data_dict['days_after_last_local_min'] = days_after_last_local_min
+        data_dict['percent_change_from_last_local_min'] = percent_change_from_last_local_min
+        
+        # last local maximum
+        last_local_max = df.loc[df['local']=='maximum', 'date'].max()
+        days_after_last_local_max = (current_date.date() - last_local_max).days
+        last_local_max_price = df.loc[df['date']==last_local_max, 'close'].iloc[0]
+        percent_change_from_last_local_max = ((last_price/ last_local_max_price )-1) * 100
+        data_dict['last_local_max_date'] = last_local_max
+        data_dict['last_local_max_price'] = last_local_max_price
+        data_dict['days_after_last_local_max'] = days_after_last_local_max
+        data_dict['percent_fall_from_last_local_max'] = ((last_price/ last_local_max_price )-1) * -100
+        
         return data_dict
     except:
         print(f'Error with {ticker}')
