@@ -33,6 +33,8 @@ jobs:
           pip install numpy==1.26.4
           pip install ipython
           pip install setuptools
+          pip install -U kaleido
+          pip install pyTelegramBotAPI
     
       - name: execute py script # run main.py
         run: python get_data.py
