@@ -38,6 +38,12 @@ jobs:
     
       - name: execute py script # run main.py
         run: python get_data.py
+        
+      - name: send signals
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          CHAT_ID: ${{ secrets.CHAT_ID }}
+        run: python send_signals.py
 
       - name: commit files
         run: |
