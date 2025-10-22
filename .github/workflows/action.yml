@@ -28,16 +28,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install virtualenv
 
-      - name: Create and activate virtualenv for goldhand + pandas_ta
+      - name: Package installs
         run: |
-          virtualenv ta_env
-          source ta_env/bin/activate
-          pip install --upgrade pip
-          pip install git+https://github.com/twopirllc/pandas-ta.git@master
           pip install goldhand
           pip install python-dotenv requests ipython setuptools kaleido pyTelegramBotAPI
-
-
 
       - name: execute py script # run main.py
         run: python get_data.py
