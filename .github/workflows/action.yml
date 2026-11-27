@@ -5,9 +5,6 @@ name: run task.py
 #    branches:
 #      - main  # Change this to your default branch if it's not 'main'
 
-on:
-  schedule:
-    - cron: '0 23 * * 1-5' 
 
 
 jobs:
